@@ -1,0 +1,198 @@
+% simple template for protocols
+% created by Lena Meßner
+% last update: 14.06.2022
+
+% !TeX spellcheck = en_GB
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{lipsum}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[greek, ngerman, main=english]{babel}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[hyphens]{url}
+\usepackage{listings}
+\usepackage{placeins}
+\usepackage{pdfpages}
+\usepackage{icomma}
+\usepackage{pdflscape}
+\usepackage{gensymb}
+\usepackage{cmll}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{acronym}
+\usepackage{cell}
+\usepackage{array}
+\usepackage{varwidth}
+\usepackage{subcaption}  % statt subfig
+
+%----------------------------------------------------------------
+%----        Relevant for this course                        ----
+%----------------------------------------------------------------
+
+\usepackage[backend=biber,
+  isbn=false,                     % ISBN nicht anzeigen, gleiches geht mit nahezu allen anderen Feldern
+  autocite=inline,                % regelt Aussehen für \autocite
+                                  %      inline: Zitat in Klammern (\parancite)
+                                  %      footnote: Zitat in Fußnoten (\footcite)
+                                  %      plain: Zitat direkt ohne Klammern (\cite)
+  style=ieee,         		        % Legt den Stil für die Zitate fest
+                                  %      ieee: Zitate als Zahlen [1]
+                                  %      alphabetic: Zitate als Kürzel und Jahr [Ein05]
+                                  %      authoryear: Zitate Author und Jahr [Einstein (1905)]
+  hyperref=true,                  % Hyperlinks für Zitate
+]{biblatex}     
+
+\addbibresource{literature.bib}
+
+
+%----------------------------------------------------------------
+
+%\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont} 
+%für andere Schriftart (unwichtig!)
+
+\titleformat{\chapter}
+[hang]
+{\Large}
+{\thechapter}
+{10pt}
+{\Large}
+[{\titlerule[0.3pt]}]
+
+
+\titlespacing*{\chapter}{0pt}{0pt}{15pt}[0pt] %{Einrücken}{Abstand oben}{Abstand unten}[Rand]
+
+
+\titleformat{\section}
+{\large}
+{\thesection}
+{5pt}
+{\large}
+
+\titlespacing*{\section}{0pt}{17pt}{8pt}[0pt]
+
+
+\DeclareCaptionStyle{Captions}{labelfont={small, bf}, textfont={small}, aboveskip=0.3cm, belowskip=0.5cm}
+\DeclareCaptionStyle{Ausnahme}{labelfont={small, bf}, textfont={small}, aboveskip=0.3cm, belowskip=0cm}
+
+\captionsetup{style=Captions}      %captions sind die Bildbeschriftungen!!
+
+
+\geometry{outer=25mm,
+	inner=25mm,
+	top=25mm,
+	bottom=25mm}
+
+\onehalfspacing
+
+\renewcommand{\arraystretch}{1.1}  % definiert vertikalen Abstand der Tabellenzeilen
+	
+
+\begin{document}
+\onehalfspacing
+\pagenumbering{roman}
+	
+\begin{titlepage}
+	\begin{flushleft}University of Heidelberg\\
+	 Faculty of Biosciences\\
+	 Molecular Biotechnology Bachelor Program\\
+	\end{flushleft}
+\vspace*{6.5cm}
+	\begin{center}
+		\huge Training state\\ \bigskip
+    	\Large Seminar LATEX and Literature\\ \smallskip
+    	\large 15.02.2022
+    	\normalsize
+	\end{center}
+\vspace*{\fill}
+	\begin{flushright} 
+	\large Max Mustermann\\ \normalsize
+	matriculation number 1234567
+	\end{flushright}
+\end{titlepage}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+
+\newpage
+
+
+\onehalfspacing
+\pagenumbering{arabic}
+\chapter{Introduction}
+\blindtext
+
+
+
+\chapter{Materials and Methods}
+\lipsum[2-5]
+
+
+\chapter{Results}
+
+\lipsum[3]
+
+\begin{equation*}
+	f(x) = 0,264x - 0,0057
+\end{equation*}
+
+\begin{table}[h!]
+	\centering
+	\caption [Reaktionsraten]{In dieser Tabelle sind die berechneten Reaktionsraten mit der zugehörigen Konzentration an G6P dargestellt.\label{TabelleReaktionsraten}}
+	
+	\begin{tabular}{lp{1.5cm}l}
+		\toprule
+		c(G6P) [mM]	& &	Reaktionsrate [mM NADPH/s]	\\
+		
+		\midrule
+		0	& &	(2,5 $\pm$ 0,7) $\cdot$ 10\textsuperscript{-5}	\\
+		0,125	& &	(8,1 $\pm$ 0,3) $\cdot$ 10\textsuperscript{-5}	\\
+		0,25	& &	(1,51 $\pm$ 0,18) $\cdot$ 10\textsuperscript{-4}	\\
+		0,5	& &	(1,93 $\pm$ 0,12) $\cdot$ 10\textsuperscript{-4}	\\
+		1	& &	(2,036 $\pm$ 0,003) $\cdot$ 10\textsuperscript{-4}	\\
+		2	& &	(2,16 $\pm$ 0,06) $\cdot$ 10\textsuperscript{-4}	\\
+		3	& &	(2,33 $\pm$ 0,07) $\cdot$ 10\textsuperscript{-4}	\\
+		5	& &	(2,27 $\pm$ 0,09) $\cdot$ 10\textsuperscript{-4}	\\
+		
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\FloatBarrier
+		
+\begin{align*}
+f(x) &= 983,94x + 3796,8 = 0 \\
+x &= -3,858771876
+\end{align*}
+
+
+\chapter{Discussion}
+
+Eine andere vergleichbare Studie erhält ähnliche Ergebnisse und bestätigt damit die gestellte Hypothese \cite{douglas1900}. Es stimmt somit alles mit der Literatur überein. 
+
+\appendix
+\setcounter{chapter}{18}
+
+
+
+
+%Literaturverzeichnis
+\printbibliography
+
+
+
+\end{document}
